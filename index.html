@@ -57,12 +57,13 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
-        .logo::before {
-            content: "🍞";
-            font-size: 32px;
+        .logo img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
         }
 
         nav a {
@@ -360,6 +361,15 @@
             .btn {
                 width: 100%;
             }
+            .logo img {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+
         }
 
         /* 애니메이션 */
@@ -395,7 +405,10 @@
     <!-- 헤더 -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">빵.zip</a>
+            <a href="#" class="logo">
+                <img src="bbangzip_1024.png" alt="빵.zip 로고">
+                빵.zip
+            </a>
             <nav>
                 <a href="#features">기능소개</a>
                 <a href="#benefits">혜택</a>
