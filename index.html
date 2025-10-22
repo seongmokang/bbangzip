@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="동네 빵집의 신선함을 한 번에, 빵.zip에서 만나보세요!">
+    <title>빵.zip - 우리동네 숨어있는 빵맛집</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* 컬러 변수 */
+        :root {
+            --beige: #F5E6D3;
+            --brown: #8B6F47;
+            --dark-brown: #6B5437;
+            --white: #FFFFFF;
+            --light-gray: #F8F8F8;
+        }
+
+        /* 헤더 */
+        header {
+            background: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--brown);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: "🍞";
+            font-size: 32px;
+        }
+
+        nav a {
+            margin-left: 30px;
+            color: var(--brown);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--dark-brown);
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, var(--beige) 0%, #FFE4C4 100%);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: var(--brown);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: var(--dark-brown);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--brown);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(139,111,71,0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139,111,71,0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--brown);
+            border: 2px solid var(--brown);
+        }
+
+        .btn-secondary:hover {
+            background: var(--brown);
+            color: var(--white);
+        }
+
+        /* 공통 섹션 스타일 */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 38px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--brown);
+        }
+
+        /* 문제 제시 섹션 */
+        .problem {
+            background: var(--light-gray);
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .problem-card .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--brown);
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 솔루션 섹션 */
+        .solution {
+            background: var(--white);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--beige);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin: 0 auto 25px;
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--brown);
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 타겟별 혜택 */
+        .benefits {
+            background: var(--beige);
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-box {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .benefit-box h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: var(--brown);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefit-box ul {
+            list-style: none;
+        }
+
+        .benefit-box li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .benefit-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--brown);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        /* CTA 섹션 */
+        .final-cta {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--dark-brown) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .final-cta h2 {
+            color: var(--white);
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* 푸터 */
+        footer {
+            background: #333;
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* 스크롤 애니메이션 */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">빵.zip</a>
+            <nav>
+                <a href="#features">기능소개</a>
+                <a href="#benefits">혜택</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>동네 빵집의 신선함을<br>한 번에, 빵.zip에서 만나보세요!</h1>
+            <p>신선한 빵과 특별한 프로모션을 지금 바로 만나보세요</p>
+            <div class="cta-buttons">
+                <a href="#consumer-signup" class="btn btn-primary">빵 예약하기 🍞</a>
+                <a href="#bakery-signup" class="btn btn-secondary">빵집 광고 문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문제 제시 -->
+    <section class="problem">
+        <h2>이런 고민 있으신가요?</h2>
+        <div class="problem-cards">
+            <div class="problem-card scroll-animate">
+                <div class="icon">😔</div>
+                <h3>빵집 운영자님</h3>
+                <p>생산량 예측이 어려워 매일 빵을 버리거나, 손님이 와도 빵이 없어 기회를 놓치고 계신가요?</p>
+            </div>
+            <div class="problem-card scroll-animate">
+                <div class="icon">📢</div>
+                <h3>마케팅 고민</h3>
+                <p>인스타그램 홍보만으로는 부족하고, 효과적인 지역 마케팅 방법을 찾지 못하고 계신가요?</p>
+            </div>
+            <div class="problem-card scroll-animate">
+                <div class="icon">🔍</div>
+                <h3>소비자님</h3>
+                <p>동네 숨은 빵집을 찾기 어렵고, 갓 구운 빵 시간과 타임세일 정보를 놓치고 계신가요?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 솔루션 -->
+    <section class="solution" id="features">
+        <h2>빵.zip이 해결해드립니다</h2>
+        <div class="features">
+            <div class="feature scroll-animate">
+                <div class="feature-icon">🗺️</div>
+                <h3>위치 기반 빵집 검색</h3>
+                <p>내 주변 숨은 빵집을 지도에서 한눈에 찾고, 거리순·인기순으로 쉽게 발견하세요</p>
+            </div>
+            <div class="feature scroll-animate">
+                <div class="feature-icon">⏰</div>
+                <h3>실시간 알림</h3>
+                <p>갓 구운 빵 출시 시간, 타임세일 시작을 놓치지 않도록 푸시 알림으로 바로 알려드려요</p>
+            </div>
+            <div class="feature scroll-animate">
+                <div class="feature-icon">📊</div>
+                <h3>생산량 예측 지원</h3>
+                <p>과거 판매 데이터 기반으로 최적의 생산량을 예측하여 폐기 손실을 줄여드려요</p>
+            </div>
+            <div class="feature scroll-animate">
+                <div class="feature-icon">📱</div>
+                <h3>간편한 예약 시스템</h3>
+                <p>원하는 빵을 미리 예약하고 픽업 시간을 선택하여 편리하게 구매하세요</p>
+            </div>
+            <div class="feature scroll-animate">
+                <div class="feature-icon">🎯</div>
+                <h3>지역 타겟팅 광고</h3>
+                <p>우리 동네 고객에게만 집중 홍보하여 효과적인 마케팅 효과를 경험하세요</p>
+            </div>
+            <div class="feature scroll-animate">
+                <div class="feature-icon">💰</div>
+                <h3>합리적인 가격</h3>
+                <p>타임세일과 프로모션 정보로 신선한 빵을 더 저렴하게 만나보세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 타겟별 혜택 -->
+    <section class="benefits" id="benefits">
+        <h2>누구에게나 특별한 혜택</h2>
+        <div class="benefit-grid">
+            <div class="benefit-box scroll-animate">
+                <h3>🍞 소비자에게는</h3>
+                <ul>
+                    <li>동네 숨은 빵집을 쉽게 발견</li>
+                    <li>갓 구운 빵 시간 실시간 알림</li>
+                    <li>타임세일 정보로 합리적 구매</li>
+                    <li>간편한 예약으로 시간 절약</li>
+                    <li>리뷰와 평점으로 선택 도움</li>
+                    <li>관심 빵집 찜하기로 빠른 접근</li>
+                </ul>
+            </div>
+            <div class="benefit-box scroll-animate">
+                <h3>🏪 빵집 운영자에게는</h3>
+                <ul>
+                    <li>생산량 예측으로 폐기 손실 감소</li>
+                    <li>효과적인 지역 타겟팅 마케팅</li>
+                    <li>예약 시스템으로 안정적 매출</li>
+                    <li>판매 데이터 분석 리포트 제공</li>
+                    <li>간편한 메뉴 관리 및 업데이트</li>
+                    <li>신규 고객 유입 증가 효과</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 최종 CTA -->
+    <section class="final-cta">
+        <h2>지금 바로 시작하세요</h2>
+        <p>빵.zip과 함께 신선한 빵의 모든 것을 경험하세요</p>
+        <div class="cta-buttons">
+            <a href="#consumer-signup" class="btn btn-primary">소비자 사전 신청하기</a>
+            <a href="#bakery-signup" class="btn btn-secondary" style="background: var(--white); color: var(--brown);">빵집 파트너 신청하기</a>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2025 빵.zip. All rights reserved.</p>
+        <p>문의: contact@bbangzip.com</p>
+    </footer>
+
+    <script>
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
