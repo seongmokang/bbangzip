@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="빵.zip 프로젝트 소개 - 동네 빵집과 소비자를 연결하는 혁신적인 플랫폼">
+    <title>빵.zip 프로젝트 소개</title>
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/png" href="bbangzip_1024.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --beige: #F5E6D3;
+            --brown: #8B6F47;
+            --dark-brown: #6B5437;
+            --white: #FFFFFF;
+            --light-gray: #F8F8F8;
+            --dark-gray: #333333;
+            --accent: #D4A574;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.8;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* 헤더 */
+        header {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--dark-brown) 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .logo-section img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-section h1 {
+            font-size: 48px;
+            font-weight: 900;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.85;
+        }
+
+        /* 네비게이션 */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 15px 20px;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--brown);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--dark-brown);
+            border-bottom-color: var(--brown);
+        }
+
+        /* 공통 섹션 */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 36px;
+            color: var(--brown);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        /* 문제 정의 섹션 */
+        .problem {
+            background: var(--light-gray);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .problem-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+        }
+
+        .problem-card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 22px;
+            color: var(--brown);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .evidence {
+            background: var(--beige);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-left: 5px solid var(--brown);
+        }
+
+        .evidence h4 {
+            color: var(--brown);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .evidence ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .evidence li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+
+        .evidence li::before {
+            content: "📊";
+            position: absolute;
+            left: 0;
+        }
+
+        /* 솔루션 섹션 */
+        .solution {
+            background: var(--white);
+        }
+
+        .solution-hero {
+            background: linear-gradient(135deg, var(--beige) 0%, #FFE4C4 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .solution-hero h3 {
+            font-size: 32px;
+            color: var(--brown);
+            margin-bottom: 20px;
+        }
+
+        .solution-hero p {
+            font-size: 20px;
+            color: var(--dark-brown);
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--beige);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 20px;
+            color: var(--brown);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 타겟 페르소나 */
+        .persona {
+            background: var(--light-gray);
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .persona-card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .persona-avatar {
+            font-size: 60px;
+        }
+
+        .persona-header h3 {
+            font-size: 26px;
+            color: var(--brown);
+        }
+
+        .persona-details {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .persona-details h4 {
+            color: var(--brown);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .persona-details p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .persona-needs {
+            list-style: none;
+        }
+
+        .persona-needs li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .persona-needs li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--brown);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        /* 비즈니스 모델 */
+        .business-model {
+            background: var(--white);
+        }
+
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .revenue-card {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 15px;
+            border-top: 5px solid var(--brown);
+        }
+
+        .revenue-card h3 {
+            font-size: 24px;
+            color: var(--brown);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .revenue-amount {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-brown);
+            margin: 20px 0;
+        }
+
+        .revenue-details {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .total-revenue {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--dark-brown) 100%);
+            color: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .total-revenue h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .total-revenue .amount {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .total-revenue p {
+            opacity: 0.9;
+            font-size: 18px;
+        }
+
+        /* 브랜드 아이덴티티 */
+        .brand {
+            background: var(--beige);
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .brand-element {
+            background: var(--white);
+            padding: 35px 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .brand-element h4 {
+            font-size: 20px;
+            color: var(--brown);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .brand-element p, .brand-element ul {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .brand-element ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .brand-element li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .brand-element li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--brown);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .slogan-box {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--dark-brown) 100%);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .slogan-box h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .slogan {
+            font-size: 22px;
+            font-weight: 500;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+        }
+
+        /* 차별화 포인트 */
+        .differentiation {
+            background: var(--white);
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .diff-card {
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .diff-card.competitors {
+            background: #FFE4E4;
+            border-left: 5px solid #FF6B6B;
+        }
+
+        .diff-card.us {
+            background: #E4F5E4;
+            border-left: 5px solid #51CF66;
+        }
+
+        .diff-card h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .diff-list {
+            list-style: none;
+        }
+
+        .diff-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .competitors .diff-list li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #FF6B6B;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .us .diff-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #51CF66;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        /* 로드맵 */
+        .roadmap {
+            background: var(--light-gray);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: calc(50% - 30px);
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: calc(50% + 30px);
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -20px;
+            border-left-color: var(--white);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -20px;
+            border-right-color: var(--white);
+        }
+
+        .phase-badge {
+            display: inline-block;
+            background: var(--brown);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .timeline-content h3 {
+            font-size: 22px;
+            color: var(--brown);
+            margin-bottom: 15px;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-content li {
+            padding: 8px 0;
+            color: #666;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--brown);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        /* CTA 섹션 */
+        .cta-section {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--dark-brown) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 42px;
+            margin-bottom: 25px;
+        }
+
+        .cta-section h2::after {
+            background: var(--white);
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--brown);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--brown);
+        }
+
+        /* 푸터 */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 50px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-logo span {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 25px;
+            margin-top: 25px;
+            opacity: 0.7;
+        }
+
+        /* 반응형 */
+        @media (max-width: 1024px) {
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                text-align: left !important;
+            }
+
+            .timeline-content::before {
+                left: -20px !important;
+                border-right-color: var(--white) !important;
+                border-left-color: transparent !important;
+            }
+
+            .timeline-marker {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 40px 20px;
+            }
+
+            .logo-section h1 {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 20px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .problem-grid,
+            .features-grid,
+            .persona-grid,
+            .revenue-grid,
+            .brand-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <div class="header-content fade-in">
+            <div class="logo-section">
+                <img src="bbangzip_1024.png" alt="빵.zip 로고">
+                <h1>빵.zip</h1>
+            </div>
+            <p class="tagline">가장 맛있는 빵을 만날 시간</p>
+            <p class="subtitle">동네 빵집과 소비자를 연결하는 혁신적인 플랫폼</p>
+        </div>
+    </header>
+
+    <!-- 네비게이션 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#problem">문제 정의</a>
+            <a href="#solution">솔루션</a>
+            <a href="#persona">타겟 고객</a>
+            <a href="#business">비즈니스 모델</a>
+            <a href="#brand">브랜드</a>
+            <a href="#differentiation">차별화</a>
+            <a href="#roadmap">로드맵</a>
+            <a href="#contact">문의하기</a>
+        </div>
+    </nav>
+
+    <!-- 문제 정의 -->
+    <section id="problem" class="problem">
+        <h2>해결하고자 하는 문제</h2>
+        <p class="section-intro">
+            동네 빵집의 3년 내 폐업률이 높으며, 빵 생산량 예측이 어렵고 마케팅이 부족한 문제를 해결하고자 합니다.
+        </p>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="icon">📉</div>
+                <h3>높은 폐업률</h3>
+                <p>동네 빵집의 3년 내 폐업률이 높은 상황이며, 사업 지속성이 위협받고 있습니다.</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">📦</div>
+                <h3>생산량 예측 어려움</h3>
+                <p>생산 과잉 또는 부족으로 인한 손실이 빈번하며, 폐기 비용이 증가하고 기회 손실이 발생합니다.</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">📢</div>
+                <h3>마케팅 부족</h3>
+                <p>효과적인 지역 마케팅 수단이 없어 신규 고객 확보가 어렵고 매출이 불안정합니다.</p>
+            </div>
+        </div>
+
+        <div class="evidence">
+            <h4>📊 근거 자료</h4>
+            <ul>
+                <li>소상공인 및 자영업자 폐업률은 업종과 지역별로 다르나, 지역 기반 사업체들의 안정성 확보가 어려워 지속적 지원이 필요 (중소벤처기업부, 2023)</li>
+                <li>빵집은 신선식품 특성상 생산량 예측 실패 시 폐기 및 재고 손실이 크며, 마케팅 부족으로 인한 고객 유입 감소가 주요 위협 요인</li>
+                <li>지역 소상공인의 운영 안정성은 지속적 관리가 필요한 상황 (경남 두루지야앙상블, 대구 소담, 지트리아트컴퍼니 사례 참고)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 솔루션 -->
+    <section id="solution" class="solution">
+        <h2>빵.zip의 솔루션</h2>
+        
+        <div class="solution-hero">
+            <h3>신선한 빵을 빠르고 다양하게 제공</h3>
+            <p>친근하고 따뜻한 톤으로 동네 빵집과 소비자를 연결해<br>신뢰와 편리함을 전달하는 플랫폼</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h4>위치 기반 빵집 검색</h4>
+                <p>내 주변 숨은 빵집을 쉽게 발견하고 거리순·인기순으로 정렬</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h4>실시간 알림</h4>
+                <p>갓 구운 빵 출시 시간과 타임세일 정보를 실시간으로 알림</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h4>생산량 예측 지원</h4>
+                <p>과거 판매 데이터 기반으로 최적의 생산량을 예측하여 손실 감소</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h4>간편 예약 시스템</h4>
+                <p>원하는 빵을 미리 예약하고 픽업 시간 선택</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h4>지역 타겟팅 광고</h4>
+                <p>우리 동네 고객에게만 집중 홍보하여 효과적인 마케팅</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h4>판매 데이터 분석</h4>
+                <p>일/주/월별 매출 리포트와 광고 효과 분석 제공</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 타겟 페르소나 -->
+    <section id="persona" class="persona">
+        <h2>타겟 페르소나</h2>
+        <p class="section-intro">
+            빵.zip은 소비자와 공급자 양측 모두에게 가치를 제공하는 플랫폼입니다.
+        </p>
+
+        <div class="persona-grid">
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">👩</div>
+                    <div>
+                        <h3>소비자</h3>
+                        <p>빵 애호가 · 30~40대 여성</p>
+                    </div>
+                </div>
+
+                <div class="persona-details">
+                    <h4>💡 특징</h4>
+                    <p>동네 빵집을 찾아다니며 신선한 빵 생산 시간과 마감 세일 정보를 중요하게 생각합니다.</p>
+                </div>
+
+                <div class="persona-details">
+                    <h4>😣 페인 포인트</h4>
+                    <p>신선한 빵 생산 시간과 마감 세일 정보를 실시간으로 알 수 없어 구매 기회를 놓치고 있습니다.</p>
+                </div>
+
+                <h4 style="color: var(--brown); margin: 20px 0 10px;">📌 니즈</h4>
+                <ul class="persona-needs">
+                    <li>동네 숨은 빵집을 쉽게 발견</li>
+                    <li>갓 구운 빵 시간 실시간 알림</li>
+                    <li>타임세일 정보로 합리적 구매</li>
+                    <li>간편한 예약으로 시간 절약</li>
+                    <li>리뷰와 평점으로 선택 도움</li>
+                </ul>
+            </div>
+
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">👨‍🍳</div>
+                    <div>
+                        <h3>공급자</h3>
+                        <p>개인 빵집 운영자</p>
+                    </div>
+                </div>
+
+                <div class="persona-details">
+                    <h4>💡 특징</h4>
+                    <p>위치 기반 앱을 활용해 홍보 및 마케팅을 진행하며, 생산량 예측 도구가 필요합니다.</p>
+                </div>
+
+                <div class="persona-details">
+                    <h4>😣 페인 포인트</h4>
+                    <p>생산량 예측과 효과적인 홍보 마케팅 부족으로 매출 확대에 어려움을 겪고 있습니다.</p>
+                </div>
+
+                <h4 style="color: var(--brown); margin: 20px 0 10px;">📌 니즈</h4>
+                <ul class="persona-needs">
+                    <li>생산량 예측으로 폐기 손실 감소</li>
+                    <li>효과적인 지역 타겟팅 마케팅</li>
+                    <li>예약 시스템으로 안정적 매출</li>
+                    <li>판매 데이터 분석 리포트 제공</li>
+                    <li>신규 고객 유입 증가</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 비즈니스 모델 -->
+    <section id="business" class="business-model">
+        <h2>비즈니스 모델</h2>
+        <p class="section-intro">
+            빵집 광고 판매와 예약 서비스 수수료로 안정적인 수익을 창출합니다.
+        </p>
+
+        <div class="revenue-grid">
+            <div class="revenue-card">
+                <h3>💼 빵집 광고 판매</h3>
+                <div class="revenue-amount">월 100만원</div>
+                <div class="revenue-details">
+                    <p><strong>모델:</strong> 지역 타겟팅 광고 상품</p>
+                    <p><strong>대상:</strong> 개인 빵집 운영자</p>
+                    <p><strong>초기:</strong> 10개 빵집 × 10만원</p>
+                    <p><strong>혜택:</strong> 초기 3개월 무료 체험</p>
+                </div>
+            </div>
+
+            <div class="revenue-card">
+                <h3>🛒 예약 서비스 수수료</h3>
+                <div class="revenue-amount">월 100만원</div>
+                <div class="revenue-details">
+                    <p><strong>모델:</strong> 예약 건당 수수료</p>
+                    <p><strong>수수료:</strong> 건당 500원</p>
+                    <p><strong>목표:</strong> 월 2,000건 예약</p>
+                    <p><strong>혜택:</strong> 다양한 결제 옵션 제공</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-revenue">
+            <h3>💰 예상 월 매출</h3>
+            <div class="amount">200만원</div>
+            <p>초기 6개월 목표 기준 · 확장 가능성 높음</p>
+        </div>
+
+        <div class="revenue-grid" style="margin-top: 50px;">
+            <div class="revenue-card">
+                <h3>📈 부가 수익 모델</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">📊 판매 데이터 분석 리포트 유료 제공</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">⭐ 프리미엄 빵집 등급 구독 서비스</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">🎁 빵 관련 굿즈 판매</li>
+                    <li style="padding: 10px 0;">🎪 지역 이벤트 협찬 수익</li>
+                </ul>
+            </div>
+
+            <div class="revenue-card">
+                <h3>🎯 성장 전략</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">📱 지역 커뮤니티 활성화</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">🌐 SNS 운영으로 브랜드 신뢰 구축</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">🤝 파트너십 확대</li>
+                    <li style="padding: 10px 0;">🚀 전국 주요 도시 확장</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 브랜드 아이덴티티 -->
+    <section id="brand" class="brand">
+        <h2>브랜드 아이덴티티</h2>
+        
+        <div class="slogan-box">
+            <h3>브랜드 슬로건</h3>
+            <div class="slogan">🍞 가장 맛있는 빵을 만날 시간</div>
+            <div class="slogan">🏘️ 우리동네 숨어있는 빵맛집</div>
+        </div>
+
+        <div class="brand-grid">
+            <div class="brand-element">
+                <h4>🎨 컬러 팔레트</h4>
+                <p>따뜻하고 편안한 조합</p>
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #F5E6D3;" title="베이지"></div>
+                    <div class="color-swatch" style="background: #8B6F47;" title="브라운"></div>
+                    <div class="color-swatch" style="background: #FFFFFF; border: 1px solid #ddd;" title="화이트"></div>
+                </div>
+            </div>
+
+            <div class="brand-element">
+                <h4>🖋️ 폰트 스타일</h4>
+                <p>둥글둥글한 산세리프체로 친근하고 부드러운 느낌을 전달합니다.</p>
+            </div>
+
+            <div class="brand-element">
+                <h4>📸 이미지 톤</h4>
+                <p>감성적이고 자연광을 활용한 따뜻한 빵 사진으로 신선함을 강조합니다.</p>
+            </div>
+
+            <div class="brand-element">
+                <h4>🍞 로고 컨셉</h4>
+                <p>식빵 단면 모양에 집을 형상화한 심플한 디자인으로 '동네 빵집'의 의미를 담았습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 차별화 포인트 -->
+    <section id="differentiation" class="differentiation">
+        <h2>경쟁사 대비 차별화</h2>
+        <p class="section-intro">
+            빵 카테고리에 특화된 버티컬 플랫폼으로 정밀한 지역 마케팅을 제공합니다.
+        </p>
+
+        <div class="diff-grid">
+            <div class="diff-card competitors">
+                <h3>❌ 기존 경쟁사의 한계</h3>
+                <ul class="diff-list">
+                    <li><strong>지도앱:</strong> 범용 서비스로 빵집 특화 기능 부재</li>
+                    <li><strong>인스타그램:</strong> 실시간 정보 부족, 예약 기능 없음</li>
+                    <li><strong>배달앱:</strong> 프랜차이즈 위주, 동네 빵집 지원 부족</li>
+                    <li><strong>공통:</strong> 생산량 예측 및 데이터 분석 기능 없음</li>
+                </ul>
+            </div>
+
+            <div class="diff-card us">
+                <h3>✅ 빵.zip의 강점</h3>
+                <ul class="diff-list">
+                    <li><strong>버티컬 특화:</strong> 빵 카테고리에만 집중한 전문 플랫폼</li>
+                    <li><strong>정밀 타겟팅:</strong> 동네 빵집을 위한 지역 마케팅 최적화</li>
+                    <li><strong>실시간 정보:</strong> 갓 구운 빵 알림, 타임세일 정보</li>
+                    <li><strong>생산 지원:</strong> 데이터 기반 생산량 예측 도구 제공</li>
+                    <li><strong>예약 시스템:</strong> 소비자-공급자 모두에게 편의 제공</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="solution-hero" style="margin-top: 50px;">
+            <h3>💡 고객이 빵.zip을 선택하는 이유</h3>
+            <p>
+                동네 빵집에게는 경쟁 우위를 위한 정확한 생산 예측과 효과적인 지역 마케팅 수단을 제공하고,<br>
+                소비자에게는 신선하고 다양한 빵과 판매 정보를 빠르고 쉽게 전달하는 필수 플랫폼입니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- 로드맵 -->
+    <section id="roadmap" class="roadmap">
+        <h2>개발 로드맵</h2>
+        <p class="section-intro">
+            단계적 접근을 통해 안정적인 서비스 구축과 시장 확장을 진행합니다.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="phase-badge">Phase 1 (3개월)</span>
+                    <h3>MVP 개발 및 파일럿 테스트</h3>
+                    <ul>
+                        <li>✓ 핵심 기능 구현 (검색, 예약, 결제)</li>
+                        <li>✓ 5~10개 빵집 파트너 확보</li>
+                        <li>✓ 100명 베타 테스터 모집</li>
+                        <li>✓ 파일럿 지역 (1~2개 동네) 테스트</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="phase-badge">Phase 2 (3개월)</span>
+                    <h3>기능 고도화 및 사용자 확대</h3>
+                    <ul>
+                        <li>→ 실시간 재고 시스템 구축</li>
+                        <li>→ 생산량 예측 도구 β 버전</li>
+                        <li>→ 광고 상품 시스템 출시</li>
+                        <li>→ 30개 빵집, 1,000명 사용자 확보</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="phase-badge">Phase 3 (6개월)</span>
+                    <h3>시장 확장 및 수익화</h3>
+                    <ul>
+                        <li>→ 전국 주요 도시 서비스 확대</li>
+                        <li>→ AI 기반 생산량 예측 고도화</li>
+                        <li>→ 100개 이상 빵집 파트너</li>
+                        <li>→ 10,000명 이상 MAU 달성</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="phase-badge">Phase 4 (장기)</span>
+                    <h3>플랫폼 확장 및 다각화</h3>
+                    <ul>
+                        <li>→ 빵집 커뮤니티 기능 강화</li>
+                        <li>→ 굿즈 판매 및 이벤트 사업</li>
+                        <li>→ 다른 식품 카테고리 확장 검토</li>
+                        <li>→ 프랜차이즈 진출 고려</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="cta-section">
+        <h2>함께 성장할 파트너를 찾습니다</h2>
+        <p>빵.zip과 함께 동네 빵집의 미래를 만들어가실 분들을 기다립니다</p>
+        <div class="cta-buttons">
+            <a href="mailto:contact@bbangzip.com" class="btn btn-primary">투자 문의하기</a>
+            <a href="mailto:partner@bbangzip.com" class="btn btn-secondary">파트너십 문의</a>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="bbangzip_1024.png" alt="빵.zip 로고">
+                <span>빵.zip</span>
+            </div>
+            
+            <div class="footer-links">
+                <a href="mailto:contact@bbangzip.com">이메일</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 빵.zip. All rights reserved.</p>
+                <p>우리동네 숨어있는 빵맛집</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 스크롤 시 네비게이션 하이라이트
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelector(`nav a[href="#${sectionId}"]`)?.classList.add('active');
+                } else {
+                    document.querySelector(`nav a[href="#${sectionId}"]`)?.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
